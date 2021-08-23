@@ -65,10 +65,11 @@ async function getTeamRoster(teamId) {
   return { name: name[0], players: roster[0].players };
 }
 
-async function main() {
+export async function checkTeamRosters() {
   const leagueId = process.env.LEAGUE_ID;
 
   const teams = await getTeamsInLeague(leagueId);
+
 
   for (const team of teams) {
     const { name, players } = await getTeamRoster(team.team_key);
@@ -76,4 +77,3 @@ async function main() {
   }
 }
 
-main().then(() => process.exit(0));
